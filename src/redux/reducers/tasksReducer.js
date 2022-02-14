@@ -12,6 +12,7 @@ const tasksReducer = (tasks = [], action = {}) => {
       newTasks = tasks.filter((task) => action.id !== task.id);
       break;
     default:
+      newTasks = [...tasks];
       break;
   }
 
