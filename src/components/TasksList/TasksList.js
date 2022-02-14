@@ -1,12 +1,10 @@
 import TaskElement from "../TaskElement/TaskElement";
 
 const TasksList = ({ tasks }) => {
-    return (
-        <ul>
-            {tasks.map((task) => (
-                <TaskElement task={task} />
-            ))}
-        </ul>
-    );
+  return (
+    <ul title="Tasks">
+      {tasks && tasks.map((task) => <TaskElement key={task.id} task={task} />)}
+    </ul>
+  );
 };
 export default TasksList;
