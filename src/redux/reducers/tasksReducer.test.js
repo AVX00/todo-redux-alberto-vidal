@@ -42,4 +42,12 @@ describe("Given a tasks reducer", () => {
       expect(newState).toEqual(currentTasks);
     });
   });
+
+  describe("When it receives nothing", () => {
+    test("Then it should return an empty array", () => {
+      const newstate = tasksReducer();
+
+      expect(newstate).toHaveLength(0);
+    });
+  });
 });
