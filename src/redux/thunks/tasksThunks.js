@@ -33,6 +33,5 @@ export const createTaskThunk = (name) => async (dispatch) => {
   });
   if (!response.ok) return;
   const taskWithId = await response.json();
-  console.log(taskJson);
   dispatch(createTaskAction(taskWithId));
 };

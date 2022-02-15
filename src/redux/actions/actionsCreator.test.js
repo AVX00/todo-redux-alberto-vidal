@@ -47,7 +47,6 @@ describe("Given an action createor create task", () => {
       };
 
       const action = createTaskAction(task);
-      console.log();
       expect(action).toEqual(expectedAction);
     });
   });

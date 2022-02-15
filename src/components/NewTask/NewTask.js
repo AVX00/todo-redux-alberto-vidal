@@ -16,18 +16,23 @@ const NewTask = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createTaskThunk(formData.task));
+    setFormdata(blankData);
   };
+
+  const isFilled = formData.task !== "";
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="task"></label>
+      <label htmlFor="task">New Task</label>
       <input
         id="task"
         type="text"
         onChange={updateForm}
         value={formData.task}
       />
-      <button type="submit">Create Task</button>
+      <button type="submit" disabled={!isFilled}>
+        Create Task
+      </button>
     </form>
   );
 };
