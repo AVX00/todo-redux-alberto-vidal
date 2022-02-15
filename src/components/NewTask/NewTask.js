@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createTaskThunk } from "../../redux/thunks/tasksThunks";
 
 const NewTask = () => {
+  const dispatch = useDispatch();
+
   const blankData = { task: "" };
 
   const [formData, setFormdata] = useState(blankData);
@@ -11,6 +15,7 @@ const NewTask = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(createTaskThunk(formData.task));
   };
 
   return (

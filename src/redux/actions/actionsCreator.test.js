@@ -38,16 +38,15 @@ describe("Given an action creator delete task", () => {
 });
 
 describe("Given an action createor create task", () => {
-  describe("When it receives a name 'hola'", () => {
+  describe("When it receives a task with name 'hola' and done false", () => {
     test("Then it should return an action with type create class and a task with name 'hola' and done = false", () => {
-      const name = "hola";
-      const done = false;
+      const task = { name: "hola", done: false };
       const expectedAction = {
         type: actionTypes.createTask,
-        task: { name, done },
+        task,
       };
 
-      const action = createTaskAction(name);
+      const action = createTaskAction(task);
       console.log();
       expect(action).toEqual(expectedAction);
     });

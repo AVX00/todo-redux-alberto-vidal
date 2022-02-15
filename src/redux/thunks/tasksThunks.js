@@ -22,14 +22,17 @@ export const deleteTaskThunk = (id) => async (dispatch) => {
 };
 
 export const createTaskThunk = (name) => async (dispatch) => {
-  const action = createTaskAction(name);
-  const { task } = action;
+  const task = { name, done: false };
   const taskJson = JSON.stringify(task);
   const response = await fetch(process.env.REACT_APP_API_URL, {
     method: "post",
-    json: taskJson,
+    body: taskJson,
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
-
   if (!response.ok) return;
-  dispatch(action);
+  const taskWithId = await response.json();
+  console.log(taskJson);
+  dispatch(createTaskAction(taskWithId));
 };
