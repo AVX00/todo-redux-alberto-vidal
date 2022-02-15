@@ -1,4 +1,4 @@
-import { deleteTask, loadTasks } from "./actionsCreator";
+import { createTask, deleteTask, loadTasks } from "./actionsCreator";
 import { actionTypes } from "./actionsTypes";
 
 describe("Givena an actions creator load tasks", () => {
@@ -28,6 +28,23 @@ describe("Given an action creator delete task", () => {
 
       const action = deleteTask(id);
 
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given an action createor create task", () => {
+  describe("When it receives a name 'hola'", () => {
+    test("Then it should return an action with type create class and a task with name 'hola' and done = false", () => {
+      const name = "hola";
+      const done = false;
+      const expectedAction = {
+        type: actionTypes.createTask,
+        task: { name, done },
+      };
+
+      const action = createTask(name);
+      console.log();
       expect(action).toEqual(expectedAction);
     });
   });
