@@ -16,4 +16,15 @@ export const handlers = [
   rest.delete(`${process.env.REACT_APP_API_URL}3`, (req, res, ctx) =>
     res(ctx.status(200), ctx.json({}))
   ),
+
+  rest.post(process.env.REACT_APP_API_URL, (req, res, ctx) =>
+    res(
+      ctx.status(201),
+      ctx.json({
+        name: "hola",
+        done: false,
+        id: 2,
+      })
+    )
+  ),
 ];
