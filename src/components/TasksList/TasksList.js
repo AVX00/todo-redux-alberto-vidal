@@ -1,5 +1,7 @@
 import TaskElement from "../TaskElement/TaskElement";
 import styled from "styled-components";
+import { deleteTaskThunk } from "../../redux/thunks/tasksThunks";
+import { useDispatch } from "react-redux";
 
 const List = styled.ul`
   list-style: none;
@@ -34,9 +36,20 @@ const List = styled.ul`
 `;
 
 const TasksList = ({ tasks }) => {
+  const dispatch = useDispatch();
+
   return (
     <List title="Tasks">
-      {tasks && tasks.map((task) => <TaskElement key={task.id} task={task} />)}
+      {tasks &&
+        tasks.map((task) => (
+          <TaskElement
+            key={task.id}
+            task={task}
+            actionOnClick={() => {
+              dispatch(deleteTaskThunk(task.id));
+            }}
+          />
+        ))}
     </List>
   );
 };
