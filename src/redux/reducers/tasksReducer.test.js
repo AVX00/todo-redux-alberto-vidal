@@ -1,4 +1,4 @@
-import { deleteTask, loadTasks } from "../actions/actionsCreator";
+import { createTask, deleteTask, loadTasks } from "../actions/actionsCreator";
 import tasksReducer from "./tasksReducer";
 
 describe("Given a tasks reducer", () => {
@@ -40,6 +40,18 @@ describe("Given a tasks reducer", () => {
       const newState = tasksReducer(currentTasks);
 
       expect(newState).toEqual(currentTasks);
+    });
+  });
+
+  describe("When the state has a task and it receives a create action with a new task", () => {
+    test("Then the new state should contain 2 tasks", () => {
+      const expectedLenght = 2;
+      const currentTasks = [{ name: "aaa", id: 1 }];
+      const action = createTask("walk the dog");
+
+      const newState = tasksReducer(currentTasks, action);
+
+      expect(newState).toHaveLength(expectedLenght);
     });
   });
 
