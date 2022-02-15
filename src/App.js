@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NewTask from "./components/NewTask/NewTask";
 import TasksList from "./components/TasksList/TasksList";
 import { loadTasksThunk } from "./redux/thunks/tasksThunks";
 
@@ -11,6 +12,7 @@ function App() {
   }, [dispatch]);
   return (
     <>
+      <NewTask />
       <TasksList tasks={tasks} />
     </>
   );

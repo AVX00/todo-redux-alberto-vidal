@@ -6,10 +6,13 @@ import { useDispatch } from "react-redux";
 const List = styled.ul`
   list-style: none;
   padding: 0;
+  min-width: 300px;
+
   & li {
     background-color: #00a1c4;
     margin: 10px;
     padding: 10px;
+    width: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
