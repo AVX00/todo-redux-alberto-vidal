@@ -1,4 +1,8 @@
-import { createTask, deleteTask, loadTasks } from "./actionsCreator";
+import {
+  createTaskAction,
+  deleteTaskAction,
+  loadTasksAction,
+} from "./actionsCreator";
 import { actionTypes } from "./actionsTypes";
 
 describe("Givena an actions creator load tasks", () => {
@@ -10,7 +14,7 @@ describe("Givena an actions creator load tasks", () => {
         tasks,
       };
 
-      const action = loadTasks(tasks);
+      const action = loadTasksAction(tasks);
 
       expect(action).toEqual(expectedAction);
     });
@@ -26,7 +30,7 @@ describe("Given an action creator delete task", () => {
         id,
       };
 
-      const action = deleteTask(id);
+      const action = deleteTaskAction(id);
 
       expect(action).toEqual(expectedAction);
     });
@@ -43,7 +47,7 @@ describe("Given an action createor create task", () => {
         task: { name, done },
       };
 
-      const action = createTask(name);
+      const action = createTaskAction(name);
       console.log();
       expect(action).toEqual(expectedAction);
     });

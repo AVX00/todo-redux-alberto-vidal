@@ -1,4 +1,8 @@
-import { createTask, deleteTask, loadTasks } from "../actions/actionsCreator";
+import {
+  createTaskAction,
+  deleteTaskAction,
+  loadTasksAction,
+} from "../actions/actionsCreator";
 import tasksReducer from "./tasksReducer";
 
 describe("Given a tasks reducer", () => {
@@ -7,7 +11,7 @@ describe("Given a tasks reducer", () => {
       const currentTasks = [];
       const expectedNewState = [{ name: "walk the dog" }];
       const tasks = [{ name: "walk the dog" }];
-      const action = loadTasks(tasks);
+      const action = loadTasksAction(tasks);
 
       const newState = tasksReducer(currentTasks, action);
 
@@ -22,7 +26,7 @@ describe("Given a tasks reducer", () => {
         { name: "walk the dog", id: 2 },
       ];
       const expectedNewState = [{ name: "walk the dog", id: 2 }];
-      const action = deleteTask(1);
+      const action = deleteTaskAction(1);
 
       const newState = tasksReducer(currentTasks, action);
 
@@ -47,7 +51,7 @@ describe("Given a tasks reducer", () => {
     test("Then the new state should contain 2 tasks", () => {
       const expectedLenght = 2;
       const currentTasks = [{ name: "aaa", id: 1 }];
-      const action = createTask("walk the dog");
+      const action = createTaskAction("walk the dog");
 
       const newState = tasksReducer(currentTasks, action);
 

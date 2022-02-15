@@ -9,8 +9,12 @@ const NewTask = () => {
     setFormdata({ ...formData, [event.target.id]: event.target.value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="task"></label>
       <input
         id="task"
