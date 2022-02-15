@@ -9,6 +9,7 @@ export const loadTasksThunk = async (dispatch) => {
 };
 
 export const deleteTaskThunk = (id) => async (dispatch) => {
+  console.log("uthatn");
   const response = await fetch(`${process.env.REACT_APP_API_URL}${id}`, {
     method: "delete",
   });

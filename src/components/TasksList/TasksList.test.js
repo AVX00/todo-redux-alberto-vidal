@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderInStore } from "../../setupTests";
 import TasksList from "./TasksList";
 
 describe("Given a TasksList component", () => {
   describe("When it's rendered", () => {
     test("Then it should render a list with name tasks", () => {
-      render(<TasksList />);
+      renderInStore(<TasksList />);
 
       const list = screen.queryByRole("list", { name: /tasks/i });
 
@@ -19,7 +20,7 @@ describe("Given a TasksList component", () => {
         { name: "greet the neighbors", id: 2 },
       ];
 
-      render(<TasksList tasks={tasks} />);
+      renderInStore(<TasksList tasks={tasks} />);
       const firstText = screen.queryByText(tasks[0].name);
       const secondText = screen.queryByText(tasks[1].name);
 

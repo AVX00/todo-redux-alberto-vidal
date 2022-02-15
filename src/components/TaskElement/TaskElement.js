@@ -1,7 +1,12 @@
-const TaskElement = ({ task }) => {
+const TaskElement = ({ task: { name }, actionOnClick }) => {
+  const preventedActionOnClick = (event) => {
+    event.preventDefault();
+    actionOnClick();
+  };
+
   return (
-    <li>
-      <p>{task.name}</p>
+    <li onClick={preventedActionOnClick}>
+      <p>{name}</p>
       <a href="deleteTask">X</a>
     </li>
   );
